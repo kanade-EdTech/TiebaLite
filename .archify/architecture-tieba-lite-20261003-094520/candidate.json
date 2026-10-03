@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Tieba Lite 应用架构",
+    "locale": "zh-CN",
+    "subtitle": "Android 客户端的 UI、API、持久化与后台任务边界",
+    "output": ".archify/architecture-tieba-lite-20261003-094520/tieba-lite.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/oxyroid/TiebaLite.git",
+      "provider": "github",
+      "link_mode": "web",
+      "revision": "4e96c26ecbdfd81d9ddffba1eb3a3f1d2a455163"
+    }
+  },
+  "components": [
+    {
+      "id": "android-user",
+      "type": "external",
+      "label": "用户 / Android 系统",
+      "sublabel": "启动、导航、分享链接、系统事件",
+      "pos": [40, 300],
+      "size": [170, 70],
+      "sources": [
+        { "path": "app/src/main/AndroidManifest.xml", "line": 82, "end_line": 97, "label": "应用入口" },
+        { "path": "app/src/main/AndroidManifest.xml", "line": 141, "end_line": 176, "label": "深链入口" }
+      ]
+    },
+    {
+      "id": "ui-shell",
+      "type": "frontend",
+      "label": "应用 UI 壳层",
+      "sublabel": "MainActivity + Activities / Fragments",
+      "pos": [330, 300],
+      "size": [190, 70],
+      "sources": [
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/activities/MainActivity.kt", "line": 56, "end_line": 56, "label": "主页面" },
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/activities/MainActivity.kt", "line": 146, "end_line": 164, "label": "页面组装" },
+        { "path": "app/src/main/AndroidManifest.xml", "line": 98, "end_line": 122, "label": "业务页面" }
+      ]
+    },
+    {
+      "id": "feature-layer",
+      "type": "frontend",
+      "label": "贴吧业务功能",
+      "sublabel": "论坛、帖子、用户、消息、登录与 WebView",
+      "pos": [638, 300],
+      "size": [220, 70],
+      "sources": [
+        { "path": "app/src/main/AndroidManifest.xml", "line": 98, "end_line": 122, "label": "业务 Activity" },
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/api/interfaces/impls/MixedTiebaApiImpl.kt", "line": 25, "end_line": 41, "label": "业务 API 映射" }
+      ]
+    },
+    {
+      "id": "tieba-facade",
+      "type": "backend",
+      "label": "TiebaApi 门面",
+      "sublabel": "ITiebaApi → MixedTiebaApiImpl",
+      "pos": [950, 300],
+      "size": [200, 70],
+      "tag": "统一业务接口",
+      "sources": [
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/api/TiebaApi.kt", "line": 6, "end_line": 8, "label": "门面单例" },
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/api/interfaces/impls/MixedTiebaApiImpl.kt", "line": 25, "end_line": 37, "label": "实现与分流" }
+      ]
+    },
+    {
+      "id": "http-stack",
+      "type": "backend",
+      "label": "Retrofit + OkHttp",
+      "sublabel": "Gson、Cookie、公共参数、签名与错误拦截",
+      "pos": [950, 500],
+      "size": [230, 70],
+      "sources": [
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/api/retrofit/RetrofitTiebaApi.kt", "line": 31, "end_line": 48, "label": "公共参数与签名" },
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/api/retrofit/RetrofitTiebaApi.kt", "line": 114, "end_line": 131, "label": "HTTP 客户端构建" }
+      ]
+    },
+    {
+      "id": "baidu-tieba",
+      "type": "external",
+      "label": "百度贴吧服务",
+      "sublabel": "c.tieba.baidu.com / tieba.baidu.com",
+      "pos": [1350, 500],
+      "size": [220, 70],
+      "sources": [
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/api/retrofit/RetrofitTiebaApi.kt", "line": 50, "end_line": 73, "label": "API 基地址" },
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/api/retrofit/RetrofitTiebaApi.kt", "line": 75, "end_line": 111, "label": "多端点客户端" }
+      ]
+    },
+    {
+      "id": "local-store",
+      "type": "database",
+      "label": "本地数据与缓存",
+      "sublabel": "LitePal：账户 / 历史；ExternalCache：JSON 缓存",
+      "pos": [900, 700],
+      "size": [240, 76],
+      "sources": [
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/BaseApplication.kt", "line": 35, "end_line": 46, "label": "LitePal 初始化" },
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/utils/AccountUtil.java", "line": 40, "end_line": 54, "label": "账户读模型" },
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/utils/CacheUtil.java", "line": 19, "end_line": 38, "label": "文件缓存" }
+      ]
+    },
+    {
+      "id": "update-api",
+      "type": "cloud",
+      "label": "Tieba Lite 更新服务",
+      "sublabel": "版本、更新说明与更新信息",
+      "pos": [1150, 120],
+      "size": [230, 70],
+      "sources": [
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/api/HttpConstant.kt", "line": 24, "end_line": 29, "label": "更新端点" },
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/api/LiteApi.kt", "line": 19, "end_line": 83, "label": "更新 API" }
+      ]
+    },
+    {
+      "id": "background-jobs",
+      "type": "backend",
+      "label": "后台任务",
+      "sublabel": "NotifyJobService 消息通知 + OKSignService 自动签到",
+      "pos": [570, 510],
+      "size": [230, 76],
+      "sources": [
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/services/NotifyJobService.kt", "line": 25, "end_line": 52, "label": "消息轮询" },
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/services/OKSignService.kt", "line": 143, "end_line": 151, "label": "自动签到" },
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/utils/AccountUtil.java", "line": 40, "end_line": 54, "label": "后台读取账户" }
+      ]
+    },
+    {
+      "id": "android-scheduler",
+      "type": "external",
+      "label": "Android 调度器",
+      "sublabel": "JobScheduler / BOOT_COMPLETED / AlarmManager",
+      "pos": [280, 510],
+      "size": [210, 76],
+      "sources": [
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/activities/MainActivity.kt", "line": 319, "end_line": 330, "label": "消息任务调度" },
+        { "path": "app/src/main/java/com/huanchengfly/tieba/post/receivers/BootCompleteSignReceiver.kt", "line": 13, "end_line": 31, "label": "开机签到调度" }
+      ]
+    }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "Tieba Lite Android 应用进程", "wraps": ["ui-shell", "feature-layer", "tieba-facade", "http-stack", "local-store", "background-jobs"] },
+    { "kind": "security-group", "label": "外部系统与网络边界", "wraps": ["android-user", "android-scheduler", "baidu-tieba", "update-api"] }
+  ],
+  "connections": [
+    { "id": "user-ui", "from": "android-user", "to": "ui-shell", "label": "启动 / 深链 / 导航", "variant": "emphasis" },
+    { "id": "ui-features", "from": "ui-shell", "to": "feature-layer", "label": "Activity + Fragment" },
+    { "id": "features-facade", "from": "feature-layer", "to": "tieba-facade", "label": "调用业务接口" },
+    { "id": "facade-http", "from": "tieba-facade", "to": "http-stack", "label": "选择 New / Mini / Official / Web API" },
+    { "id": "http-baidu", "from": "http-stack", "to": "baidu-tieba", "label": "HTTP + Cookie / 签名", "variant": "security" },
+    { "id": "features-store", "from": "feature-layer", "to": "local-store", "label": "账户、历史、缓存", "variant": "dashed", "fromSide": "bottom", "toSide": "top", "labelAt": [782, 610] },
+    { "id": "facade-store", "from": "tieba-facade", "to": "local-store", "label": "读取登录态 / BDUSS", "variant": "dashed", "fromSide": "right", "toSide": "top", "labelAt": [1100, 620] },
+    { "id": "ui-update", "from": "ui-shell", "to": "update-api", "label": "检查版本", "fromSide": "top", "toSide": "bottom", "labelDy": -46 },
+    { "id": "jobs-scheduler", "from": "android-scheduler", "to": "background-jobs", "label": "系统触发", "variant": "dashed" },
+    { "id": "jobs-facade", "from": "background-jobs", "to": "tieba-facade", "label": "消息 / 签到请求" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "主链路", "items": ["MainActivity 组装论坛、消息和个人中心页面", "业务页面通过 ITiebaApi 访问贴吧能力", "RetrofitTiebaApi 统一注入 Cookie、设备参数与签名拦截器"] },
+    { "dot": "emerald", "title": "本地状态", "items": ["BaseApplication 启动时初始化 LitePal", "AccountUtil 维护账户与 BDUSS 登录态", "CacheUtil 使用 externalCacheDir 保存 JSON 缓存"] },
+    { "dot": "rose", "title": "后台与外部边界", "items": ["NotifyJobService 查询回复 / @我并发送通知", "OKSignService 通过同一 TiebaApi 执行签到", "百度贴吧与更新服务均位于应用进程之外"] }
+  ]
+}

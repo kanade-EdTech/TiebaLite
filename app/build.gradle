@@ -7,6 +7,7 @@ apply plugin: 'kotlin-kapt'
 
 buildscript {
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
         jcenter()
         google()
     }
@@ -17,7 +18,11 @@ buildscript {
 }
 
 def keystoreProperties = new Properties()
-keystoreProperties.load(new FileInputStream(rootProject.file("keystore.properties")))
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def hasReleaseSigning = keystorePropertiesFile.exists()
+if (hasReleaseSigning) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
 def applicationProperties = new Properties()
 applicationProperties.load(new FileInputStream(rootProject.file("application.properties")))
 def SHA1 = System.getenv("CIRCLE_SHA1")
@@ -59,12 +64,14 @@ andResGuard {
 
 android {
     signingConfigs {
-        release {
-            keyAlias keystoreProperties['releaseKeyAlias']
-            keyPassword keystoreProperties['releaseKeyPassword']
-            storeFile file(rootDir.getCanonicalPath() + '/' + keystoreProperties['releaseKeyStore'])
-            storePassword keystoreProperties['releaseStorePassword']
-            v2SigningEnabled true
+        if (hasReleaseSigning) {
+            release {
+                keyAlias keystoreProperties['releaseKeyAlias']
+                keyPassword keystoreProperties['releaseKeyPassword']
+                storeFile file(rootDir.getCanonicalPath() + '/' + keystoreProperties['releaseKeyStore'])
+                storePassword keystoreProperties['releaseStorePassword']
+                v2SigningEnabled true
+            }
         }
     }
     compileSdkVersion 29
@@ -84,7 +91,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             debuggable false
             jniDebuggable false
-            signingConfig signingConfigs.release
+            if (hasReleaseSigning) {
+                signingConfig signingConfigs.release
+            }
             zipAlignEnabled true
             multiDexEnabled true
         }

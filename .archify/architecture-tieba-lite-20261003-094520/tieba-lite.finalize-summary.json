@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\candidate.json",
+    "sha256": "55ccb6f5f09166cb7ad4b29aea8f2ad36f0a21c0f01eaf3cd2d83141c3887dc9",
+    "bytes": 8850
+  },
+  "artifact": {
+    "path": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.html",
+    "sha256": "23a4c20f3ee26b34eb96f4953a82324cca359dd88a0b0a5e015941725b0e7702",
+    "bytes": 775649
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "fail"
+  },
+  "failedStage": "browser-check",
+  "diagnostics": [
+    {
+      "code": "viewer/browser-check-runtime",
+      "severity": "error",
+      "message": "browser-check could not complete its Chrome inspection.",
+      "subject": {
+        "artifact": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.html"
+      },
+      "evidence": {
+        "reason": "Chrome DevTools read pipe failed: stream ended\nChrome process: still running.\nChrome stderr:\n[12308:35864:1003/095005.882:ERROR:chrome\\installer\\util\\google_update_settings_win.cc:270] Failed opening key Software\\Google\\Update\\ClientStateMedium\\{8A69D345-D564-463c-AFF1-A69D9E530F96} to set usagestats; result: 5\r\n[12308:22464:1003/095006.035:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:33492:1003/095006.036:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.073:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:27804:1003/095006.100:ERROR:services\\device\\public\\cpp\\geolocation\\system_geolocation_source_win.cc:124] Failed to create IAppCapability: 拒绝访问。 (0x80070005)\r\n[12308:22464:1003/095006.103:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:32400:1003/095006.103:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.131:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:33492:1003/095006.140:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.158:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:33492:1003/095006.158:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.184:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:22464:1003/095006.184:FATAL:content\\browser\\gpu\\gpu_data_manager_impl_private.cc:417] GPU process isn't usable. Goodbye.\nChrome transport: Node v22.22.3, libuv 1.51.0, win32; pid=12308, exitCode=null, signalCode=null.\nChrome read pipe: readable=false, ended=true, destroyed=false, receivedBytes=1328, messages=3, bufferedBytes=0.\nChrome write pipe: writable=false, ended=true, destroyed=false, completedWrites=3, writtenBytes=255, bufferedBytes=0."
+      },
+      "supportedFixes": [
+        "resolve the reported Chrome inspection error, then rerun browser-check"
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.finalize.json",
+    "summaryReceipt": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.finalize-summary.json",
+    "browserCheckReceipt": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 1915
+}

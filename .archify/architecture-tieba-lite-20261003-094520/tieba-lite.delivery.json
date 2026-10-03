@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "b85b8c32-b70c-4f6d-bab9-6d6fb03db80d",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\candidate.json",
+  "output": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.html",
+  "specification": {
+    "sha256": "55ccb6f5f09166cb7ad4b29aea8f2ad36f0a21c0f01eaf3cd2d83141c3887dc9",
+    "bytes": 8850
+  },
+  "artifact": {
+    "sha256": "23a4c20f3ee26b34eb96f4953a82324cca359dd88a0b0a5e015941725b0e7702",
+    "bytes": 775649
+  }
+}

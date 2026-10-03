@@ -1,0 +1,439 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "showcase",
+  "startedAt": "2026-10-03T01:50:05.247Z",
+  "specification": {
+    "path": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\candidate.json",
+    "sha256": "55ccb6f5f09166cb7ad4b29aea8f2ad36f0a21c0f01eaf3cd2d83141c3887dc9",
+    "bytes": 8850
+  },
+  "artifact": {
+    "path": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.html",
+    "sha256": "23a4c20f3ee26b34eb96f4953a82324cca359dd88a0b0a5e015941725b0e7702",
+    "bytes": 775649
+  },
+  "stages": {
+    "validate": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": null,
+      "execution": "embedded-in-deliver",
+      "command": [
+        "D:\\Tools\\Node\\node.exe",
+        "C:\\Users\\墨家修士\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "deliver",
+        "architecture",
+        "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\candidate.json",
+        "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.html",
+        "--quality",
+        "showcase",
+        "--repo-root",
+        "F:\\VS_Code_Project\\TiebaLite",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "55ccb6f5f09166cb7ad4b29aea8f2ad36f0a21c0f01eaf3cd2d83141c3887dc9",
+          "bytes": 8850
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 1032,
+      "command": [
+        "D:\\Tools\\Node\\node.exe",
+        "C:\\Users\\墨家修士\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "deliver",
+        "architecture",
+        "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\candidate.json",
+        "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.html",
+        "--quality",
+        "showcase",
+        "--repo-root",
+        "F:\\VS_Code_Project\\TiebaLite",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "b85b8c32-b70c-4f6d-bab9-6d6fb03db80d",
+        "ok": true,
+        "command": "deliver",
+        "type": "architecture",
+        "input": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\candidate.json",
+        "output": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.html",
+        "specification": {
+          "sha256": "55ccb6f5f09166cb7ad4b29aea8f2ad36f0a21c0f01eaf3cd2d83141c3887dc9",
+          "bytes": 8850
+        },
+        "artifact": {
+          "sha256": "23a4c20f3ee26b34eb96f4953a82324cca359dd88a0b0a5e015941725b0e7702",
+          "bytes": 775649
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        },
+        "evidence": {
+          "verified": true,
+          "repository": "https://github.com/oxyroid/TiebaLite",
+          "revision": "4e96c26ecbdfd81d9ddffba1eb3a3f1d2a455163",
+          "references": 23
+        }
+      }
+    },
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 255,
+      "command": [
+        "D:\\Tools\\Node\\node.exe",
+        "C:\\Users\\墨家修士\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "check",
+        "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.html",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.html",
+        "artifact": {
+          "sha256": "23a4c20f3ee26b34eb96f4953a82324cca359dd88a0b0a5e015941725b0e7702",
+          "bytes": 775649
+        },
+        "checks": [
+          {
+            "name": "single_svg",
+            "ok": true,
+            "details": [
+              "found 1 <svg> block(s)"
+            ]
+          },
+          {
+            "name": "finite_svg",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "orthogonal_arrows",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "label_route_clearance",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_crossings",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_corridors",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "container_border_runs",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "route_rhythm",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "legend_clearance",
+            "ok": true,
+            "details": []
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "showcase",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 0
+          },
+          "metrics": {
+            "properCrossings": 0,
+            "resolvedCrossovers": 2,
+            "ambiguousCorridors": 0,
+            "arrowheadCollisions": 0,
+            "containerBorderRuns": 0,
+            "labelRouteClearanceIssues": 0,
+            "labelCanvasOverflowIssues": 0,
+            "minLabelRouteClearance": 5,
+            "desktopReadabilityIssues": 0,
+            "viewportHeightIssues": 0,
+            "minProjectedNodeTextPx": 6.073414634146341,
+            "maxBends": 4,
+            "routesOverSuggestedBends": 3,
+            "maxStretch": 1.21,
+            "routesOverSuggestedStretch": 0,
+            "minSegmentPx": 24,
+            "minInteriorSegmentPx": 69.8,
+            "shortSegmentCount": 0,
+            "shortEndpointSegmentCount": 0,
+            "shortInteriorSegmentCount": 0,
+            "microSegmentCount": 0
+          },
+          "suggestedLimits": {
+            "bendsPerRelationship": 2,
+            "stretch": 1.35,
+            "segmentPx": 16,
+            "microSegmentPx": 8
+          },
+          "routeReview": {
+            "crossings": [
+              {
+                "left": {
+                  "id": "http-baidu",
+                  "from": "http-stack",
+                  "to": "baidu-tieba",
+                  "label": "HTTP + Cookie / 签名",
+                  "collectionIndex": 4,
+                  "artifactIndex": 5
+                },
+                "right": {
+                  "id": "facade-store",
+                  "from": "tieba-facade",
+                  "to": "local-store",
+                  "label": "读取登录态 / BDUSS",
+                  "collectionIndex": 6,
+                  "artifactIndex": 7
+                },
+                "point": [
+                  1202,
+                  535
+                ]
+              },
+              {
+                "left": {
+                  "id": "features-store",
+                  "from": "feature-layer",
+                  "to": "local-store",
+                  "label": "账户、历史、缓存",
+                  "collectionIndex": 5,
+                  "artifactIndex": 6
+                },
+                "right": {
+                  "id": "jobs-facade",
+                  "from": "background-jobs",
+                  "to": "tieba-facade",
+                  "label": "消息 / 签到请求",
+                  "collectionIndex": 9,
+                  "artifactIndex": 10
+                },
+                "point": [
+                  856.1999999999999,
+                  497
+                ]
+              }
+            ],
+            "detours": [
+              {
+                "relationship": {
+                  "id": "features-store",
+                  "from": "feature-layer",
+                  "to": "local-store",
+                  "label": "账户、历史、缓存",
+                  "collectionIndex": 5,
+                  "artifactIndex": 6
+                },
+                "bends": 4,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "facade-store",
+                  "from": "tieba-facade",
+                  "to": "local-store",
+                  "label": "读取登录态 / BDUSS",
+                  "collectionIndex": 6,
+                  "artifactIndex": 7
+                },
+                "bends": 3,
+                "stretch": 1.21
+              },
+              {
+                "relationship": {
+                  "id": "jobs-facade",
+                  "from": "background-jobs",
+                  "to": "tieba-facade",
+                  "label": "消息 / 签到请求",
+                  "collectionIndex": 9,
+                  "artifactIndex": 10
+                },
+                "bends": 4,
+                "stretch": 1
+              }
+            ]
+          },
+          "leadingSpace": {
+            "measured": true,
+            "emptyTopPx": 90,
+            "emptyTopRatio": 0.104,
+            "occupiedTop": 90,
+            "viewBoxTop": 0,
+            "canvasHeight": 864,
+            "typicalNodeHeight": 70,
+            "reviewSuggested": false
+          },
+          "desktopReadability": {
+            "budgetBasis": "recognized-declared-wide",
+            "readerContract": "declared-wide-v1",
+            "availableDiagramWidth": 1346,
+            "actualBudgetPx": 1346,
+            "actualReaderWidth": 1376,
+            "desiredReaderWidth": 1670,
+            "viewportCap": 1376,
+            "limit": "viewport-cap",
+            "requestedTargetPx": 7.5,
+            "requestedTargetMet": false,
+            "hardFloorPx": 6,
+            "hardFloorMet": true,
+            "minimumOwner": {
+              "kind": "node",
+              "id": "background-jobs"
+            },
+            "minimumSourceTextPx": 7.4,
+            "minimumProjectedTextPx": 6.073414634146341,
+            "semanticTextCount": 32
+          },
+          "issues": []
+        },
+        "provenance": "current",
+        "deliveryReceiptId": "b85b8c32-b70c-4f6d-bab9-6d6fb03db80d"
+      }
+    },
+    "browser-check": {
+      "status": "fail",
+      "exitCode": 1,
+      "durationMs": 130,
+      "command": [
+        "D:\\Tools\\Node\\node.exe",
+        "C:\\Users\\墨家修士\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "browser-check",
+        "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.html",
+        "--json",
+        "--require-provenance"
+      ],
+      "execution": "in-process",
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": false,
+        "command": "browser-check",
+        "evidenceKind": "automated-browser",
+        "status": "fail",
+        "visualReview": "not-requested",
+        "provenance": "current",
+        "deliveryReceiptId": "b85b8c32-b70c-4f6d-bab9-6d6fb03db80d",
+        "artifact": {
+          "path": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.html",
+          "sha256": "23a4c20f3ee26b34eb96f4953a82324cca359dd88a0b0a5e015941725b0e7702",
+          "bytes": 775649
+        },
+        "state": {
+          "detail": "read",
+          "motion": "still"
+        },
+        "chrome": {
+          "status": "available",
+          "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+        },
+        "diagnostics": [
+          {
+            "code": "viewer/browser-check-runtime",
+            "severity": "error",
+            "message": "browser-check could not complete its Chrome inspection.",
+            "subject": {
+              "artifact": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.html"
+            },
+            "evidence": {
+              "reason": "Chrome DevTools read pipe failed: stream ended\nChrome process: still running.\nChrome stderr:\n[12308:35864:1003/095005.882:ERROR:chrome\\installer\\util\\google_update_settings_win.cc:270] Failed opening key Software\\Google\\Update\\ClientStateMedium\\{8A69D345-D564-463c-AFF1-A69D9E530F96} to set usagestats; result: 5\r\n[12308:22464:1003/095006.035:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:33492:1003/095006.036:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.073:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:27804:1003/095006.100:ERROR:services\\device\\public\\cpp\\geolocation\\system_geolocation_source_win.cc:124] Failed to create IAppCapability: 拒绝访问。 (0x80070005)\r\n[12308:22464:1003/095006.103:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:32400:1003/095006.103:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.131:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:33492:1003/095006.140:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.158:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:33492:1003/095006.158:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.184:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:22464:1003/095006.184:FATAL:content\\browser\\gpu\\gpu_data_manager_impl_private.cc:417] GPU process isn't usable. Goodbye.\nChrome transport: Node v22.22.3, libuv 1.51.0, win32; pid=12308, exitCode=null, signalCode=null.\nChrome read pipe: readable=false, ended=true, destroyed=false, receivedBytes=1328, messages=3, bufferedBytes=0.\nChrome write pipe: writable=false, ended=true, destroyed=false, completedWrites=3, writtenBytes=255, bufferedBytes=0."
+            },
+            "supportedFixes": [
+              "resolve the reported Chrome inspection error, then rerun browser-check"
+            ]
+          }
+        ],
+        "containment": {
+          "status": "fail",
+          "policy": "fit-or-reader-declared-readable-vertical-scroll",
+          "viewports": []
+        },
+        "themeStates": {
+          "status": "fail",
+          "viewports": []
+        },
+        "readability": {
+          "status": "fail",
+          "minimumProjectedNodeTextPx": 6,
+          "viewports": []
+        },
+        "viewerChrome": {
+          "status": "fail",
+          "viewports": []
+        },
+        "captures": {
+          "status": "not-requested",
+          "screenshots": [],
+          "contactSheet": null
+        },
+        "sidecars": {
+          "receipt": "tieba-lite.browser-check.json",
+          "files": []
+        },
+        "error": "Chrome DevTools read pipe failed: stream ended\nChrome process: still running.\nChrome stderr:\n[12308:35864:1003/095005.882:ERROR:chrome\\installer\\util\\google_update_settings_win.cc:270] Failed opening key Software\\Google\\Update\\ClientStateMedium\\{8A69D345-D564-463c-AFF1-A69D9E530F96} to set usagestats; result: 5\r\n[12308:22464:1003/095006.035:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:33492:1003/095006.036:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.073:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:27804:1003/095006.100:ERROR:services\\device\\public\\cpp\\geolocation\\system_geolocation_source_win.cc:124] Failed to create IAppCapability: 拒绝访问。 (0x80070005)\r\n[12308:22464:1003/095006.103:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:32400:1003/095006.103:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.131:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:33492:1003/095006.140:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.158:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:33492:1003/095006.158:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.184:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:22464:1003/095006.184:FATAL:content\\browser\\gpu\\gpu_data_manager_impl_private.cc:417] GPU process isn't usable. Goodbye.\nChrome transport: Node v22.22.3, libuv 1.51.0, win32; pid=12308, exitCode=null, signalCode=null.\nChrome read pipe: readable=false, ended=true, destroyed=false, receivedBytes=1328, messages=3, bufferedBytes=0.\nChrome write pipe: writable=false, ended=true, destroyed=false, completedWrites=3, writtenBytes=255, bufferedBytes=0."
+      }
+    }
+  },
+  "diagnostics": [
+    {
+      "code": "viewer/browser-check-runtime",
+      "severity": "error",
+      "message": "browser-check could not complete its Chrome inspection.",
+      "subject": {
+        "artifact": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.html"
+      },
+      "evidence": {
+        "reason": "Chrome DevTools read pipe failed: stream ended\nChrome process: still running.\nChrome stderr:\n[12308:35864:1003/095005.882:ERROR:chrome\\installer\\util\\google_update_settings_win.cc:270] Failed opening key Software\\Google\\Update\\ClientStateMedium\\{8A69D345-D564-463c-AFF1-A69D9E530F96} to set usagestats; result: 5\r\n[12308:22464:1003/095006.035:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:33492:1003/095006.036:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.073:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:27804:1003/095006.100:ERROR:services\\device\\public\\cpp\\geolocation\\system_geolocation_source_win.cc:124] Failed to create IAppCapability: 拒绝访问。 (0x80070005)\r\n[12308:22464:1003/095006.103:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:32400:1003/095006.103:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.131:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:33492:1003/095006.140:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.158:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:33492:1003/095006.158:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Users\\墨家修士\\AppData\\Local\\Temp\\archify-visual-check-profile-rEwKOf\\GPUPersistentCache\\DawnGraphiteCache\\H6POMLZSBZPTMTLBCTMXRDH27BAKUDTA\", error: 0: 另一个程序正在使用此文件，进程无法访问。 (0x20)\r\n[12308:22464:1003/095006.184:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1130] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12308:22464:1003/095006.184:FATAL:content\\browser\\gpu\\gpu_data_manager_impl_private.cc:417] GPU process isn't usable. Goodbye.\nChrome transport: Node v22.22.3, libuv 1.51.0, win32; pid=12308, exitCode=null, signalCode=null.\nChrome read pipe: readable=false, ended=true, destroyed=false, receivedBytes=1328, messages=3, bufferedBytes=0.\nChrome write pipe: writable=false, ended=true, destroyed=false, completedWrites=3, writtenBytes=255, bufferedBytes=0."
+      },
+      "supportedFixes": [
+        "resolve the reported Chrome inspection error, then rerun browser-check"
+      ]
+    }
+  ],
+  "evidence": {
+    "receipt": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.finalize.json",
+    "summaryReceipt": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.finalize-summary.json",
+    "browserCheckReceipt": "F:\\VS_Code_Project\\TiebaLite\\.archify\\architecture-tieba-lite-20261003-094520\\tieba-lite.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "failedStage": "browser-check",
+  "finishedAt": "2026-10-03T01:50:07.163Z",
+  "durationMs": 1915
+}
