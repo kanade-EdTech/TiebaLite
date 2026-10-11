@@ -83,6 +83,9 @@ jobs:
         api-level: [29, 36]
 
     steps:
+      - name: Checkout smoke test script
+        uses: actions/checkout@v4
+
       - name: Download Debug APK
         uses: actions/download-artifact@v4
         with:
@@ -106,22 +109,8 @@ jobs:
           emulator-boot-timeout: 600
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
-          script: |
-            set -euo pipefail
-            APK_PATH="$(find artifacts/apk -name '*.apk' -print -quit)"
-            test -n "$APK_PATH"
-            adb install -r "$APK_PATH"
-            adb shell am force-stop com.huanchengfly.tieba.post
-            adb shell monkey -p com.huanchengfly.tieba.post -c android.intent.category.LAUNCHER 1
-            sleep 10
-            APP_PID="$(adb shell pidof com.huanchengfly.tieba.post | tr -d '\r')"
-            test -n "$APP_PID"
-            EVIDENCE_DIR="m0-device-evidence/api-${{ matrix.api-level }}"
-            mkdir -p "$EVIDENCE_DIR"
-            adb exec-out screencap -p > "$EVIDENCE_DIR/launch.png"
-            adb shell dumpsys activity activities > "$EVIDENCE_DIR/activity.txt"
-            adb shell dumpsys package com.huanchengfly.tieba.post > "$EVIDENCE_DIR/package.txt"
-            adb logcat -d -t 500 > "$EVIDENCE_DIR/logcat.txt"
+          # The action executes each input line in a separate sh process.
+          script: bash .github/scripts/m0-device-smoke.sh ${{ matrix.api-level }}
 
       - name: Upload device evidence
         if: always()
