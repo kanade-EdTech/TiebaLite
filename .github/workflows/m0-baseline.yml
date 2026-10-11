@@ -47,7 +47,8 @@ jobs:
         run: ./gradlew testDebugUnitTest assembleDebug --no-daemon --console=plain
 
       # M0 records the existing Lint debt without hiding it. Remove
-      # continue-on-error after the baseline MissingPermission error is fixed.
+      # continue-on-error after all baseline errors are fixed, including
+      # MissingPermission and UseRequireInsteadOfGet.
       - name: Generate Lint baseline report
         id: lint
         continue-on-error: true
