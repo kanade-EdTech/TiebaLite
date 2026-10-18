@@ -43,6 +43,9 @@ jobs:
       - name: Make Gradle wrapper executable
         run: chmod +x ./gradlew
 
+      - name: Check UI test helpers
+        run: python3 -m unittest discover -s .github/scripts -p 'test_m0_ui_flows.py' -v
+
       - name: Run unit tests and build Debug APK
         run: ./gradlew testDebugUnitTest assembleDebug --no-daemon --console=plain
 
@@ -74,7 +77,7 @@ jobs:
           if-no-files-found: warn
 
   device-smoke:
-    name: API ${{ matrix.api-level }} install and launch
+    name: API ${{ matrix.api-level }} account-free UI flows
     needs: build-test-lint
     runs-on: ubuntu-latest
     timeout-minutes: 30

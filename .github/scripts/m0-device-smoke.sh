@@ -30,3 +30,7 @@ sleep 10
 APP_PID="$(timeout 30s adb shell pidof "$PACKAGE" | tr -d '\r')"
 test -n "$APP_PID"
 printf '%s\n' "$APP_PID" > "$EVIDENCE_DIR/pid.txt"
+
+# UI assertions run only on the disposable emulator owned by this CI job.
+timeout --kill-after=10s 900s python3 .github/scripts/m0-ui-flows.py \
+  --api "$API_LEVEL" --apk "$APK_PATH" --evidence "$EVIDENCE_DIR/flows"
