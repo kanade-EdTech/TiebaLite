@@ -130,9 +130,14 @@ class Flows:
         self.click(**{"resource-id": f"{PACKAGE}:id/button_next"})
         self.title(title)
 
-    def capture(self, name):
-        root = self.ui()
-        ET.ElementTree(root).write(self.folder / f"{name}.xml", encoding="utf-8")
+    def capture(self, name, hierarchy=True):
+        if hierarchy:
+            root = self.ui()
+            ET.ElementTree(root).write(self.folder / f"{name}.xml", encoding="utf-8")
+        else:
+            (self.folder / f"{name}-activity.txt").write_text(
+                self.adb("shell", "dumpsys", "activity", "activities"), encoding="utf-8",
+            )
         (self.folder / f"{name}.png").write_bytes(self.adb("exec-out", "screencap", "-p", binary=True))
 
     def record(self, name, status="passed", **details):
@@ -173,13 +178,24 @@ class Flows:
     def wait_activity(self, name):
         deadline = time.monotonic() + 40
         while time.monotonic() < deadline:
-            self.ui()
             dump = self.adb("shell", "dumpsys", "activity", "activities")
             resumed = [line for line in dump.splitlines() if re.search(r"(?:mResumedActivity:|topResumedActivity=)", line)]
             if any(f"{PACKAGE}/.activities.{name}" in line for line in resumed):
                 return
             time.sleep(1)
         raise AssertionError(f"Activity {name} did not resume")
+
+    def install_apk(self):
+        # A ready launcher does not guarantee PackageManager has finished its
+        # first-boot work. Retry only a transport timeout, never an install error.
+        for attempt in range(2):
+            try:
+                self.adb("install", "--no-streaming", "-r", str(self.apk))
+                return
+            except subprocess.TimeoutExpired:
+                if attempt:
+                    raise
+                print("Initial APK installation timed out; retrying once", flush=True)
 
     def scenario(self, decision):
         self.decision = decision
@@ -188,8 +204,10 @@ class Flows:
         self.folder.mkdir(parents=True, exist_ok=True)
         # validate_device must run before this reset. Each case starts without
         # account data, permission decisions or settings from the previous case.
-        self.adb("uninstall", PACKAGE)
-        self.adb("install", "--no-streaming", "-r", str(self.apk))
+        installed = self.adb("shell", "pm", "list", "packages", PACKAGE).splitlines()
+        if f"package:{PACKAGE}" in installed:
+            self.adb("uninstall", PACKAGE)
+        self.install_apk()
         self.adb("logcat", "-c")
         self.launch()
         self.title("欢迎使用贴吧 Lite")
@@ -232,7 +250,7 @@ class Flows:
         self.wait_activity("LoginActivity")
         if self.preference("appData", "first") != "false":
             raise AssertionError("Completing intro did not persist first=false")
-        self.capture("login-entry")
+        self.capture("login-entry", hierarchy=False)
         self.record("intro-completion")
         before_pid = self.adb("shell", "pidof", PACKAGE)
         self.adb("shell", "input", "keyevent", "KEYCODE_HOME")
@@ -240,18 +258,22 @@ class Flows:
         self.wait_activity("LoginActivity")
         if self.adb("shell", "pidof", PACKAGE) != before_pid:
             raise AssertionError("Hot start did not retain the app process")
-        self.capture("hot-start")
+        self.capture("hot-start", hierarchy=False)
         self.record("hot-start", pid=before_pid)
         self.adb("shell", "am", "force-stop", PACKAGE)
         self.launch()
         self.wait_activity("LoginActivity")
         if self.preference("settings", "theme") != "dark" or self.preference("appData", "first") != "false":
             raise AssertionError("Theme or intro completion lost after process restart")
-        self.capture("restart-persistence")
+        self.capture("restart-persistence", hierarchy=False)
         self.record("restart-persistence")
 
     def run(self):
         self.validate_device()
+        # These checks cover local startup/navigation only. Do not load external
+        # login content or let first-boot Google updates interfere with installs.
+        self.adb("shell", "svc", "wifi", "disable")
+        self.adb("shell", "svc", "data", "disable")
         failed = False
         for decision in (("deny", "allow") if self.api >= 33 else ("legacy",)):
             try:
@@ -269,11 +291,11 @@ class Flows:
                     except Exception as error:
                         print(f"Could not capture {name}: {error}", flush=True)
                 try:
-                    self.capture("final")
+                    self.capture("final", hierarchy=False)
                 except Exception as error:
                     print(f"Could not capture final UI: {error}", flush=True)
                 (self.evidence / "results.json").write_text(
-                    json.dumps({"api": self.api, "checks": self.results}, ensure_ascii=False, indent=2), encoding="utf-8",
+                    json.dumps({"api": self.api, "network": "offline", "checks": self.results}, ensure_ascii=False, indent=2), encoding="utf-8",
                 )
         return 1 if failed else 0
 

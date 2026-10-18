@@ -111,7 +111,7 @@ jobs:
           arch: x86_64
           profile: pixel_4
           emulator-boot-timeout: 600
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader -feature -Vulkan -noaudio -no-boot-anim -camera-back none
           disable-animations: true
           # The action executes each input line in a separate sh process.
           script: bash .github/scripts/m0-device-smoke.sh ${{ matrix.api-level }}

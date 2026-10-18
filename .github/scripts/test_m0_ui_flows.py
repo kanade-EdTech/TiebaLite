@@ -3,6 +3,7 @@
 import importlib.util
 from pathlib import Path
 import unittest
+from unittest.mock import Mock
 import xml.etree.ElementTree as ET
 
 
@@ -68,6 +69,28 @@ class ResetGuardTests(unittest.TestCase):
             with self.subTest(environment=environment, emulator=emulator, api=actual_api):
                 with self.assertRaises(RuntimeError):
                     flows.require_disposable_emulator(environment, emulator, actual_api, expected_api)
+
+
+class InstallationTests(unittest.TestCase):
+    def test_one_transport_timeout_can_be_retried(self):
+        installer = Mock(apk=Path("debug.apk"))
+        installer.adb.side_effect = [flows.subprocess.TimeoutExpired("adb", 120), "Success"]
+        flows.Flows.install_apk(installer)
+        self.assertEqual(installer.adb.call_count, 2)
+
+    def test_repeated_timeouts_still_fail(self):
+        installer = Mock(apk=Path("debug.apk"))
+        installer.adb.side_effect = flows.subprocess.TimeoutExpired("adb", 120)
+        with self.assertRaises(flows.subprocess.TimeoutExpired):
+            flows.Flows.install_apk(installer)
+        self.assertEqual(installer.adb.call_count, 2)
+
+    def test_installation_errors_are_never_retried_as_success(self):
+        installer = Mock(apk=Path("debug.apk"))
+        installer.adb.side_effect = flows.subprocess.CalledProcessError(1, "adb")
+        with self.assertRaises(flows.subprocess.CalledProcessError):
+            flows.Flows.install_apk(installer)
+        self.assertEqual(installer.adb.call_count, 1)
 
 
 if __name__ == "__main__":
