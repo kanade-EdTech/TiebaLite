@@ -44,8 +44,8 @@ class SearchUserFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (arguments != null) {
-            keyword = arguments!!.getString(ARG_KEYWORD)
+        arguments?.let {
+            keyword = it.getString(ARG_KEYWORD)
         }
     }
 

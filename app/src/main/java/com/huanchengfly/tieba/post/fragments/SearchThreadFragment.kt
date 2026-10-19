@@ -52,8 +52,8 @@ class SearchThreadFragment : BaseFragment(), OnOrderSwitchListener {
         super.onCreate(savedInstanceState)
         order = SearchThreadOrder.NEW
         filter = SearchThreadFilter.ONLY_THREAD
-        if (arguments != null) {
-            keyword = arguments!!.getString(ARG_KEYWORD)
+        arguments?.let {
+            keyword = it.getString(ARG_KEYWORD)
         }
     }
 

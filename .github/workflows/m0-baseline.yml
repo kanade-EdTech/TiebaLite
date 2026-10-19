@@ -49,12 +49,9 @@ jobs:
       - name: Run unit tests and build Debug APK
         run: ./gradlew testDebugUnitTest assembleDebug --no-daemon --console=plain
 
-      # M0 records the existing Lint debt without hiding it. Remove
-      # continue-on-error after all baseline errors are fixed, including
-      # MissingPermission and UseRequireInsteadOfGet.
-      - name: Generate Lint baseline report
+      # Lint errors are blocking; existing warnings remain visible in reports.
+      - name: Run required Lint check
         id: lint
-        continue-on-error: true
         run: ./gradlew lintDebug --no-daemon --console=plain
 
       - name: Upload Debug APK
